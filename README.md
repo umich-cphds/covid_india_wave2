@@ -1,6 +1,6 @@
 # Resurgence of SARS-CoV-2 in India: Potential role of B.1.617.2 variant and delayed interventions
 
-Authors: Maxwell Salvatore<sup>1,2,3</sup>, Rupam Bhattacharyya<sup>1</sup>, Soumik Purkayastha<sup>1</sup>, Lauren Zimmermann<sup>1,2</sup>, Debashree Ray<sup>4,5</sup>, Aditi Hazra<sup>6</sup>, Michael Kleinsasser<sup>1</sup>, Thomas Mellan<sup>7</sup>, Charlie Whittaker<sup>7</sup>, Seth Flaxman<sup>8</sup>, Samir Bhatt<sup>7,9</sup>, Swapnil Mishra<sup>7†</sup>, Bhramar Mukherjee<sup>1,2,3†*</sup>
+Authors: [Maxwell Salvatore](https://www.maxsalvatore.com)<sup>1,2,3</sup>, Rupam Bhattacharyya<sup>1</sup>, Soumik Purkayastha<sup>1</sup>, Lauren Zimmermann<sup>1,2</sup>, Debashree Ray<sup>4,5</sup>, Aditi Hazra<sup>6</sup>, Michael Kleinsasser<sup>1</sup>, Thomas Mellan<sup>7</sup>, Charlie Whittaker<sup>7</sup>, Seth Flaxman<sup>8</sup>, Samir Bhatt<sup>7,9</sup>, [Swapnil Mishra](https://www.imperial.ac.uk/people/s.mishra)<sup>7†</sup>, [Bhramar Mukherjee](https://sph.umich.edu/faculty-profiles/mukherjee-bhramar.html)<sup>1,2,3†*</sup>
 
 <sup>1</sup> Department of Biostatistics, University of Michigan, Ann Arbor, MI, USA<br>
 <sup>2</sup> Center for Precision Health Data Science, University of Michigan, Ann Arbor, MI, USA<br>
