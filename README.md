@@ -17,5 +17,3 @@ Authors: [Maxwell Salvatore](https://www.maxsalvatore.com)<sup>1,2,3</sup>, Rupa
 ## Materials
 
 This repository contains scripts used to perform the analyses and generate the figures presented in the above-titled manuscript.
-
-:warning: *Materials being collected and organized. Check back soon.* :warning: 
