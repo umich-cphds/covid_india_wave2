@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+section_2_two_strain_model/figures
+section_2_two_strain_model/results
+section_2_two_strain_model/stan_model/*.rds
+section_2_two_strain_model/data/pcr_genome_fraction*.csv
