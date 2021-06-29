@@ -1,3 +1,9 @@
+# libraries -----------
+librarian::shelf(
+  tidyverse, janitor, 
+)
+
+# internal function -----------
 extract_cfr <- function(end_date = "2021-05-15") {
 
   d <- read_csv("https://api.covid19india.org/csv/latest/case_time_series.csv",
@@ -53,13 +59,12 @@ period_summary <- function(
   use_adj_v = FALSE,
   mh        = FALSE,
   adj_len   = 2,
-  # base_path = "/Users/maxsalvatore/local/science_covind/main",
   N         = 1.34e9,
   waning    = FALSE
 ) {
 
-  base_path <- "/Users/maxsalvatore/local/science_covind/main"
-  waning_path <- "/Users/maxsalvatore/local/science_covind/waning"
+  base_path   <- "PATH_TO/eSIR_OUTPUT/*_plot_data.RData"
+  waning_path <- "PATH_TO/waning_eSIR_OUTPUT/*_plot_data.RData"
   
   if (waning == TRUE) {
     if (mh == TRUE) {
@@ -101,7 +106,6 @@ period_summary <- function(
       load(glue("{base_path}/{scen}_smooth1_plot_data.RData"))
     }
   }
-  # load("India_plot_data.RData")
   
   other_plot        <- plot_data_ls[[2]]
   T_prime           <- other_plot[[1]]
@@ -183,11 +187,8 @@ period_summary <- function(
   
   t_pred <- length(seq.Date(from = as.Date(scen), to = as.Date(end_date), by = "day"))
   
-  # T_Pred = 30 # Change to period length of interest accordingly
-  
   draws_total_period <- rowSums(daily_new_draws[, 1:t_pred, drop = F])
   
-  ###This thing below is what you will use for the tables.###
   pred_total_period <- c(
     quantile(draws_total_period, probs = c(0.025, 0.5, 0.975)),
     mean(draws_total_period)
@@ -195,7 +196,6 @@ period_summary <- function(
   pred_total_period[pred_total_period < 0] <- 0
   
   # Daily new deaths
-  
   cfr <- extract_cfr(end_date = end_date) %>%
     select(
       date,
