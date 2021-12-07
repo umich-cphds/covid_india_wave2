@@ -6,7 +6,7 @@ librarian::shelf(tidyverse, chron, rjags,
 
 ### helper scripts (included in same folder)
 source(paste0("esir_ally.R"))
-source(paste0("tvt.eSAIR_mod.R"))
+source(paste0("tvt.wi.eSAIR.R"))
 source(paste0("utils_functions.R"))
 
 today   <- Sys.Date() - 1
