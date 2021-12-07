@@ -3,7 +3,7 @@ librarian::shelf(tidyverse, lubridate, ggsci, ggrepel, janitor, glue, here,
                  ggtext, patchwork, data.table)
 librarian::shelf(data.table, janitor, ggplot2, patchwork, ggpubr)
 
-source("esir_ally.R")
+source("figures/figure s10/esir_ally.R")
 
 ggplot2::theme_set(
   ggplot2::theme_classic() +
@@ -32,7 +32,7 @@ end_date   <- "2021-06-30"
 
 
 # data ------------
-dat <- fread("covid19india_national_counts_20211031.csv")[, date := as.Date(date)]
+dat <- fread("figures/figure s10/covid19india_national_counts_20211031.csv")[, date := as.Date(date)]
 
 dat <- dat[, active_cases := (total_cases - total_recovered) / 10000][
   , `:=` (hosp_cases = active_cases * hosp_rate, icu_cases = active_cases * (hosp_rate * icu_rate), scenario = "Observed", date = as.Date(date))][]
@@ -72,35 +72,35 @@ extracto <- function(x, start = as.Date("2021-02-19"), l_out = 199,
 }
 
 feb_19 <- extracto(
-  x     = glue("2021-02-19_t2_r2_forecast_MCMC.RData"),
+  x     = glue("figures/figure s10/2021-02-19_t2_r2_forecast_MCMC.RData"),
   start = as.Date("2021-02-19"),
   scen  = "Tier II\n(February 19)",
   sp    = 0.15
 )
 
 mar_13 <- extracto(
-  x     = glue("2021-03-13_t3_r2_forecast_MCMC.RData"),
+  x     = glue("figures/figure s10/2021-03-13_t3_r2_forecast_MCMC.RData"),
   start = as.Date("2021-03-13"),
   scen  = "Tier III\n(March 13)",
   sp    = 0.15
 )
 
 mar_19 <- extracto(
-  x     = glue("2021-03-19_t4_r2_forecast_MCMC.RData"),
+  x     = glue("figures/figure s10/2021-03-19_t4_r2_forecast_MCMC.RData"),
   start = as.Date("2021-03-19"),
   scen  = "Tier IV\n(March 19)",
   sp    = 0.15
 )
 
 mar_30 <- extracto(
-  x     = glue("2021-03-30_t4_r2_forecast_MCMC.RData"),
+  x     = glue("figures/figure s10/2021-03-30_t4_r2_forecast_MCMC.RData"),
   start = as.Date("2021-03-30"),
   scen  = "Tier IV\n(March 30)",
   sp    = 0.15
 )
 
 apr_15 <- extracto(
-  x     = glue("2021-04-15_t4_r2_forecast_MCMC.RData"),
+  x     = glue("figures/figure s10/2021-04-15_t4_r2_forecast_MCMC.RData"),
   start = as.Date("2021-04-15"),
   scen  = "Tier IV\n(April 15)",
   sp    = 0.15
@@ -146,7 +146,7 @@ lts <- c(
 
 hosp_plot <- plot_dat %>% 
   ggplot(aes(x = date, y = hosp_cases, group = scenario)) +
-  #geom_ribbon(data = plot_dat[hosp_cases > hosp_cap], aes (x = date, ymax = hosp_cases), ymin = hosp_cap, fill = "red", alpha = 0.4, color = NA) +
+  geom_ribbon(data = plot_dat[hosp_cases > hosp_cap], aes (x = date, ymax = hosp_cases), ymin = hosp_cap, fill = "red", alpha = 0.4, color = NA) +
   geom_hline(yintercept = hosp_cap, color = unity_col, size = 1) +
   geom_line(aes(color = scenario, linetype = scenario), size = 1, show.legend = TRUE) +
   scale_color_manual(values = cols) +
@@ -175,7 +175,7 @@ hosp_plot <- hosp_plot + theme(legend.position = "none")
 
 icu_plot <- plot_dat %>% 
   ggplot(aes(x = date, y = icu_cases, group = scenario, color = scenario)) +
-  #geom_ribbon(data = plot_dat[icu_cases > icu_cap], aes (x = date, ymax = icu_cases), ymin = icu_cap, fill = "red", alpha = 0.4, color = NA) +
+  geom_ribbon(data = plot_dat[icu_cases > icu_cap], aes (x = date, ymax = icu_cases), ymin = icu_cap, fill = "red", alpha = 0.4, color = NA) +
   geom_hline(yintercept = icu_cap, color = unity_col, size = 1) +
   geom_line(aes(linetype = scenario), size = 1) +
   scale_color_manual(values = cols) +
@@ -213,7 +213,7 @@ full_plot <- patched +
   )
 
 ggsave(
-  filename = glue("figure s10.pdf"),
+  filename = glue("figures/figure s10/figure s10.pdf"),
   plot = full_plot,
   width = 8, height = 9,
   device = cairo_pdf

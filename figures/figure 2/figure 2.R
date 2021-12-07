@@ -226,8 +226,7 @@ patch_v1     <- case_plot / r_plot / pi_plot / (pi_sched_plot + cfr_plot)
 full_plot_v1 <- patch_v1 +
   plot_annotation(
   title    = "Derivation of \u03c0(t) schedules and \u03c0(t) and CFR schedules used",
-  caption  = glue("**Abbrev:** CFR, case fatality rate<br>",
-                  "**\uA9 COV-IND-19 Study Group**"),
+  caption  = glue("**Abbrev:** CFR, case fatality rate"),
   tag_levels = c("A")
 ) &
   theme(
