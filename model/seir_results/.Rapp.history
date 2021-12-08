@@ -1,0 +1,1 @@
+load("/Users/maxsalvatore/Documents/projects/covid/covid_india_wave2/model/seir_results/Result_Tier4_3.rds")
