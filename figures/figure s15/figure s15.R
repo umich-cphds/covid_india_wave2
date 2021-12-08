@@ -213,7 +213,7 @@ full_plot <- patched +
   )
 
 ggsave(
-  filename = glue("figures/figure s10/figure s10.pdf"),
+  filename = glue("figures/figure s15/figure s15.pdf"),
   plot = full_plot,
   width = 8, height = 9,
   device = cairo_pdf
