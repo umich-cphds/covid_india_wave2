@@ -1,21 +1,20 @@
-# Resurgence of SARS-CoV-2 in India: Potential role of B.1.617.2 variant and delayed interventions
+# Lessons from SARS-CoV-2 in India: A data-driven framework for pandemic resilience
 
-:link: **[Now on medRxiv](https://www.medrxiv.org/content/10.1101/2021.06.23.21259405v1)!!!**
 
-Authors: [Maxwell Salvatore](https://www.maxsalvatore.com)<sup>1,2,3</sup>, Rupam Bhattacharyya<sup>1</sup>, Soumik Purkayastha<sup>1</sup>, Lauren Zimmermann<sup>1,2</sup>, Debashree Ray<sup>4,5</sup>, Aditi Hazra<sup>6</sup>, Michael Kleinsasser<sup>1</sup>, Thomas Mellan<sup>7</sup>, Charlie Whittaker<sup>7</sup>, Seth Flaxman<sup>8</sup>, Samir Bhatt<sup>7,9</sup>, [Swapnil Mishra](https://www.imperial.ac.uk/people/s.mishra)<sup>7†</sup>, [Bhramar Mukherjee](https://sph.umich.edu/faculty-profiles/mukherjee-bhramar.html)<sup>1,2,3†*</sup>
-
-<sup>1</sup> Department of Biostatistics, University of Michigan, Ann Arbor, MI, USA<br>
-<sup>2</sup> Center for Precision Health Data Science, University of Michigan, Ann Arbor, MI, USA<br>
-<sup>3</sup> Department of Epidemiology, University of Michigan, Ann Arbor, MI, USA<br>
-<sup>4</sup> Department of Biostatistics, Bloomberg School of Public Health, Johns Hopkins University, Baltimore, MD, USA<br>
-<sup>5</sup> Department of Epidemiology, Bloomberg School of Public Health, Johns Hopkins University, Baltimore, MD, USA<br>
-<sup>6</sup> Department of Medicine, Brigham and Women's Hospital, Harvard Medical School<br>
-<sup>7</sup> Medical Research Council (MRC) Centre for Global Infectious Disease Analysis, Jameel Institute, School of Public Health, Imperial College London, UK<br>
-<sup>8</sup> Department of Mathematics, Imperial College London, UK<br>
-<sup>9</sup> Section of Epidemiology, Department of Public Health, University of Copenhagen, Denmark<br>
-<sup>†</sup> Co-senior authors<br>
-<sup>*</sup> Corrresponding author
+Maxwell Salvatore, Soumik Purkayastha, Lakshmi Ganapathi, Rupam Bhattacharyya, Ritoban Kundu, Lauren Zimmermann, Debashree Ray, Aditi Hazra, Michael Kleinsasser, Sunil Solomon, Ramnath Subbaraman, Bhramar Mukherjee 
 
 ## Materials
 
 This repository contains scripts used to perform the analyses and generate the figures presented in the above-titled manuscript.
+
+* The `figure/` folder contains subfolders corresponding to each figure. Each subfolder contains an R script that generates and saves the figure in its respective folder. These folders may also contain additional files/scripts that are needed to recreate the image. The scripts in these folder may also source scripts in the `model/` folder
+
+* The `model/` folder contains the eSAIR model scripts (e.g.,, `tvt.wi.eSAIR.R`) that are used to generate the results. It also contains a toy example that runs the model script (`toy_run.R`). It also contains some data files that are used to specify conditions in the model, like the intervention effect schedules (`pi_schedule_extended.csv`).
+
+* The `model/seir/` folder contain the scripts to run the modified SEIR model in our paper. The scripts with the prefix `Run_*` are scripts that run the model scripts. We also provide SEIRfansy scripts in `model/seirfansy_f=0`, which was modified for our SEIR model.
+
+* The `model/seir_results/` folder contains the model results in `./results/` and the data for plotting in `./plot_data/`.
+
+* The `tables/` folder contains subfolders for each table from which the model results were extracted from model results.
+
+* The `old versions/` folder contains scripts from previous submissions and revisions.
