@@ -172,8 +172,8 @@ pi_sched_plot <- pis |>
   labs(
     title   = "Intervention schedules",
     x       = "Days since start of intervention",
-    y       = "\u03c0(t)",
-    caption = "**Note:** Dashed line represents no change to pi schedule"
+    # caption = "**Note:** Dashed line represents no change to pi schedule",
+    y       = "\u03c0(t)"
   ) +
   scale_color_manual(values = cols_1) +
   theme_classic() +
@@ -198,8 +198,8 @@ cfr_plot <- cfrs %>%
   labs(
     title   = "CFR schedules",
     x       = "Date",
-    y       = "Case fatality rate (CFR)",
-    caption = glue::glue("Note: February 15, 2021 to {format(end_date, '%B %e, %Y')}")
+    # caption = glue::glue("Note: February 15, 2021 to {format(end_date, '%B %e, %Y')}"),
+    y       = "Case fatality rate (CFR)"
   ) +
   scale_y_continuous(labels = scales::percent) +
   scale_x_date(date_labels = "%B %Y") +
@@ -226,7 +226,7 @@ patch_v1     <- case_plot / r_plot / pi_plot / (pi_sched_plot + cfr_plot)
 full_plot_v1 <- patch_v1 +
   plot_annotation(
   title    = "Derivation of \u03c0(t) schedules and \u03c0(t) and CFR schedules used",
-  caption  = glue("**Abbrev:** CFR, case fatality rate"),
+  # caption  = glue("**Abbrev:** CFR, case fatality rate"),
   tag_levels = c("A")
 ) &
   theme(

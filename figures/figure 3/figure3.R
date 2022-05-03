@@ -5,7 +5,7 @@ rm(list = ls())
 librarian::shelf(tidyverse, lubridate, ggsci, ggrepel, janitor, glue,
                  ggtext, patchwork, data.table, scales)
 
-source("esir_ally.R")
+source("figures/figure 3/esir_ally.R")
 
 start_date <- as.Date("2021-01-01")
 end_date   <- as.Date("2021-06-30")
@@ -19,11 +19,11 @@ obs <- fread("https://raw.githubusercontent.com/maxsal/science_revision/main/dat
              showProgress = FALSE)[, date := as.Date(date)][date >= start_date]
 
 
-d0 <- fread("2021-02-19_t2_r2_data.txt")[, `:=` (start_date = "2021-02-19", tier = "Tier 2", scenario = "Tier 2 - February 19")]
-d1 <- fread("2021-03-13_t3_r2_data.txt")[, `:=` (start_date = "2021-03-13", tier = "Tier 3", scenario = "Tier 3 - March 13")]
-d2 <- fread("2021-03-19_t4_r2_data.txt")[, `:=` (start_date = "2021-03-19", tier = "Tier 4", scenario = "Tier 4 - March 19")]
-d3 <- fread("2021-03-30_t4_r2_data.txt")[, `:=` (start_date = "2021-03-30", tier = "Tier 4", scenario = "Tier 4 - March 30")]
-d4 <- fread("2021-04-15_t4_r2_data.txt")[, `:=` (start_date = "2021-04-15", tier = "Tier 4", scenario = "Tier 4 - April 15")]
+d0 <- fread("figures/figure 3/2021-02-19_t2_r2_data.txt")[, `:=` (start_date = "2021-02-19", tier = "Tier 2", scenario = "Tier 2 - February 19")]
+d1 <- fread("figures/figure 3/2021-03-13_t3_r2_data.txt")[, `:=` (start_date = "2021-03-13", tier = "Tier 3", scenario = "Tier 3 - March 13")]
+d2 <- fread("figures/figure 3/2021-03-19_t4_r2_data.txt")[, `:=` (start_date = "2021-03-19", tier = "Tier 4", scenario = "Tier 4 - March 19")]
+d3 <- fread("figures/figure 3/2021-03-30_t4_r2_data.txt")[, `:=` (start_date = "2021-03-30", tier = "Tier 4", scenario = "Tier 4 - March 30")]
+d4 <- fread("figures/figure 3/2021-04-15_t4_r2_data.txt")[, `:=` (start_date = "2021-04-15", tier = "Tier 4", scenario = "Tier 4 - April 15")]
 
 
 
@@ -187,7 +187,7 @@ cases_p <- smoothed_plot_data[data.table::between(date, start_date, end_date)][,
 librarian::shelf(tidyverse, lubridate, ggsci, ggrepel, janitor, glue,
                  ggtext, patchwork, data.table, scales)
 
-source("esir_ally.R")
+source("figures/figure 3/esir_ally.R")
 
 start_date <- as.Date("2021-01-01")
 end_date   <- as.Date("2021-06-30")
@@ -200,11 +200,11 @@ plot_title      <- "Predicted number of daily COVID-19 deaths under various inte
 obs <- fread("https://raw.githubusercontent.com/maxsal/science_revision/main/data/covid19india_national_counts_20211031.csv",
              showProgress = FALSE)[, date := as.Date(date)][date >= start_date]
 
-d0 <- fread("2021-02-19_t2_r2_data.txt")[, `:=` (start_date = "2021-02-19", tier = "Tier 2", scenario = "Tier 2 - February 19")]
-d1 <- fread("2021-03-13_t3_r2_data.txt")[, `:=` (start_date = "2021-03-13", tier = "Tier 3", scenario = "Tier 3 - March 13")]
-d2 <- fread("2021-03-19_t4_r2_data.txt")[, `:=` (start_date = "2021-03-19", tier = "Tier 4", scenario = "Tier 4 - March 19")]
-d3 <- fread("2021-03-30_t4_r2_data.txt")[, `:=` (start_date = "2021-03-30", tier = "Tier 4", scenario = "Tier 4 - March 30")]
-d4 <- fread("2021-04-15_t4_r2_data.txt")[, `:=` (start_date = "2021-04-15", tier = "Tier 4", scenario = "Tier 4 - April 15")]
+d0 <- fread("figures/figure 3/2021-02-19_t2_r2_data.txt")[, `:=` (start_date = "2021-02-19", tier = "Tier 2", scenario = "Tier 2 - February 19")]
+d1 <- fread("figures/figure 3/2021-03-13_t3_r2_data.txt")[, `:=` (start_date = "2021-03-13", tier = "Tier 3", scenario = "Tier 3 - March 13")]
+d2 <- fread("figures/figure 3/2021-03-19_t4_r2_data.txt")[, `:=` (start_date = "2021-03-19", tier = "Tier 4", scenario = "Tier 4 - March 19")]
+d3 <- fread("figures/figure 3/2021-03-30_t4_r2_data.txt")[, `:=` (start_date = "2021-03-30", tier = "Tier 4", scenario = "Tier 4 - March 30")]
+d4 <- fread("figures/figure 3/2021-04-15_t4_r2_data.txt")[, `:=` (start_date = "2021-04-15", tier = "Tier 4", scenario = "Tier 4 - April 15")]
 
 model_output_data <- rbindlist(list(d0, d1, d2, d3, d4))[, date := as.Date(date)]
 
@@ -361,8 +361,8 @@ full_plot <- patched +
   plot_annotation(
     title    = "Predicted number of daily COVID-19 cases and deaths under various interventions",
     subtitle = glue("{format_date(start_date)} to {format_date(end_date)} "),
-    caption  = glue("**Notes:** Observations and prediction period until {format_date(end_date)}. ",
-                    "Figures in boxes show peak number of cases (in panel A) and deaths (in panel B) for each intervention."),
+    # caption  = glue("**Notes:** Observations and prediction period until {format_date(end_date)}. ",
+    #                 "Figures in boxes show peak number of cases (in panel A) and deaths (in panel B) for each intervention."),
     tag_levels = c("A")
   ) &
   theme(
@@ -374,7 +374,7 @@ full_plot <- patched +
     plot.tag          = element_text(size = 18, hjust = 0, vjust = 1, family = "Helvetica", face = "bold")
   )
 
-ggsave(filename = glue("fig3.pdf"),
+ggsave(filename = glue("figures/figure 3/figure3.pdf"),
        plot     = full_plot,
        height   = 12,
        width    = 15,
